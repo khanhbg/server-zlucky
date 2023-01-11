@@ -1,0 +1,24 @@
+{
+  "development": {
+    "username": "Admin01",
+    "password": "Tapdoanzo.com123",
+    "database": "i9079052_wp1",
+    "host": "locallhost",
+    "dialect": "mysql",
+    "logging": false
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
