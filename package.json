@@ -4,7 +4,7 @@
   "description": "backend zolucky",
   "main": "server.js",
   "scripts": {
-    "start": "--exec babel-node src/server.js",
+    "start": "babel-node src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "PhanKhanh",
