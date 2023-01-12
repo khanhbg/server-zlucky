@@ -15,7 +15,7 @@ let app= express()
 //   })
 // app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(bodyParser.json());
-app.get("home", function(req, res) {
+app.get("/home", function(req, res) {
     let fromPhone = "+84962629794";
         console.log(fromPhone);
   })
