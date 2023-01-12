@@ -15,7 +15,10 @@ let app= express()
 //   })
 // app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(bodyParser.json());
-
+app.get("home", function(req, res) {
+    let fromPhone = "+84962629794";
+        console.log(fromPhone);
+  })
 
 // const nexmo = new Nexmo({
 //   //Don't forget to add your keys to the .env file! See .env.example for more info
