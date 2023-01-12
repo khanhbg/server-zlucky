@@ -4,14 +4,13 @@
   "description": "backend zolucky",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "babel-node src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "PhanKhanh",
   "license": "ISC",
   "dependencies": {
     "@vonage/server-sdk": "^3.0.12",
-    "babel-cli": "^6.26.0",
     "bcrypt": "^5.1.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.1",
@@ -25,9 +24,10 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.20.7",
-    "@babel/core": "^7.12.10",
+    "@babel/core": "^7.20.12",
     "@babel/node": "^7.12.10",
     "@babel/preset-env": "^7.12.10",
+    "babel-cli": "^6.26.0",
     "nodemon": "^2.0.7",
     "sequelize-cli": "^6.5.2"
   }
