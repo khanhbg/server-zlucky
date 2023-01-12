@@ -109,5 +109,5 @@ app.use(bodyParser.json());
 //console.log(Math.random())
 //let port = process.env.PORT || 3000
 app.listen(3000, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`Example app listening on port ${3000}`)
 })
