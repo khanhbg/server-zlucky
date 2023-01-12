@@ -1,5 +1,5 @@
-import * as s_user from "../services/user"
-import * as s_prize from "../services/prize"
+import * as s_user from "../services/user.js"
+import * as s_prize from "../services/prize.js"
 
 // thêm phần quà mới
 let postCreatePrize = async (req, res) => {

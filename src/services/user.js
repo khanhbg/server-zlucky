@@ -1,8 +1,8 @@
 import bcrypt from 'bcryptjs';
-import db from '../models/index';
+import db from '../models/index.js';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
-import s_list from './listWinPrize'
+import s_list from './listWinPrize.js'
 dotenv.config();
 const salt = bcrypt.genSaltSync(10);
 const jwtCode = process.env.JWTCODE;

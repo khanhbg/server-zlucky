@@ -2,7 +2,7 @@ import express from "express";
 import bodyParser from 'body-parser';
 import initWebRoutes from './routes/web.js';
 import cookieParser from 'cookie-parser';
-import connectD from "./config/connectDB";
+import connectD from "./config/connectDB.js";
 import dotenv from 'dotenv';
 const Nexmo = require('nexmo');
 let app= express()

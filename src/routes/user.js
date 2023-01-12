@@ -1,6 +1,6 @@
 import express from "express";
-import * as c_user from "../controllers/user"
-import * as s_user from "../services/user"
+import * as c_user from "../controllers/user.js"
+import * as s_user from "../services/user.js"
 let router = express.Router();
 router.post('/login',c_user.postLogin);//login ok
 router.post('/register', c_user.postRegister);//dang ki  ok
