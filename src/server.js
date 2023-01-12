@@ -19,10 +19,10 @@ app.get("/", function(req, res) {
     let fromPhone = "+84962629794";
         res.send(fromPhone);
   })
-//initWebRoutes(app);
+initWebRoutes(app);
 //connectD();
 //console.log(Math.random())
-//let port = process.env.PORT || 3000
-app.listen(3000, () => {
-  console.log(`Example app listening on port ${3000}`)
+let port = process.env.PORT || 3000
+app.listen(8080, () => {
+  console.log(`Example app listening on port ${port}`)
 })
