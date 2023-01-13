@@ -173,7 +173,12 @@ let postUpdateSpin = async (req, res) => {
         })
     }
 }
-
+let test=(req,res)=>{
+    return res.status(200).json({
+        code: 11,
+        message: 'hayy'
+    })
+}
 export {
-    postRegister, postLogin, postUpdateProfile, postUpdatePassword, getListPrizes, postUpdateSpin
+    postRegister, postLogin, postUpdateProfile, postUpdatePassword, getListPrizes, postUpdateSpin,test
 }

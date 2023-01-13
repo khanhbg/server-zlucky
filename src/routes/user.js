@@ -8,4 +8,5 @@ router.post('/updateProfile',s_user.isLogin, c_user.postUpdateProfile); //cap nh
 router.post('/changePassword', s_user.isLogin, c_user.postUpdatePassword); //doi mat khau ok
 router.post('/updateSpin', s_user.isLogin, c_user.postUpdateSpin);
 router.get('/getListPrizes',c_user.getListPrizes);
+router.get('/test',c_user.test);
 export default router;
