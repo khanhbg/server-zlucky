@@ -123,6 +123,7 @@ let postUpdatePassword = async (req, res) => {
 //show prizes
 let getListPrizes = async (req, res) => {
     try {
+        console.log('abc')
         let resData = await s_prize.getAllPrizes();
         if (resData) {
             return res.status(200).json({
