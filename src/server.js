@@ -8,7 +8,7 @@ import dotenv from 'dotenv';
 let app= express()
 app.use(cookieParser())
 app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "http://localhost:4200");
+    res.header("Access-Control-Allow-Origin", "http://localhost:4200"); 
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     res.header("Access-Control-Allow-Credentials", "true")
     next();
@@ -16,9 +16,9 @@ app.use(function (req, res, next) {
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.get("/", function(req, res) {
-    let fromPhone = "+84962629794";
     return res.status(200).json({
-      code: fromPhone
+      code: 1,
+      message: "abc",
   });
   })
 initWebRoutes(app);
