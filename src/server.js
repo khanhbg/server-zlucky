@@ -17,10 +17,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.get("/", function(req, res) {
     let fromPhone = "+84962629794";
-        res.send(fromPhone);
+    return res.status(200).json({
+      code: fromPhone
+  });
   })
 initWebRoutes(app);
-//connectD();
+connectD();
 let port = process.env.PORT || 3000
 app.listen(3000, () => {
   console.log(`Example app listening on port`)
