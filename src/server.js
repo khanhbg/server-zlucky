@@ -24,6 +24,6 @@ app.get("/", function(req, res) {
 initWebRoutes(app);
 connectD();
 let port = process.env.PORT || 3000
-app.listen(3000, () => {
+app.listen(8080, () => {
   console.log(`Example app listening on port`)
 })

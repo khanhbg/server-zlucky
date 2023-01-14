@@ -4,6 +4,7 @@ import * as s_prize from "../services/prize.js"
 // thêm phần quà mới
 let postCreatePrize = async (req, res) => {
     try {
+        console.log('abc')
         let resData = await s_prize.createPrize(req.body);
         if (resData) {
             return res.status(200).json({
