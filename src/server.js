@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 app.get("/", function(req, res) {
     return res.status(200).json({
       code: 1,
-      message: "abc",
+      message: "khanhkhanh",
   });
   })
 initWebRoutes(app);
