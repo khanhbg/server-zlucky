@@ -146,6 +146,30 @@ let getListPrizes = async (req, res) => {
         })
     }
 }
+let getProfile = async(req,res)=>{
+    try {
+        let resData = await s_user.getProfile(req.userId);
+        if (resData) {
+            return res.status(200).json({
+                code: resData.code,
+                message: resData.message,
+                profile: resData.user
+            });
+        }
+        else {
+            return res.status(400).json({
+                code: 11,
+                message: 'Lỗi DB'
+            })
+        }
+    } catch (e) {
+        console.log(e)
+        return res.status(400).json({
+            code: 12,
+            message: 'Lỗi DB'
+        })
+    }
+}
 // updateLateSpin
 let postUpdateSpin = async (req, res) => {
     try {
@@ -180,5 +204,5 @@ let test=(req,res)=>{
     })
 }
 export {
-    postRegister, postLogin, postUpdateProfile, postUpdatePassword, getListPrizes, postUpdateSpin,test
+    postRegister, postLogin, postUpdateProfile, postUpdatePassword, getListPrizes, postUpdateSpin,getProfile
 }

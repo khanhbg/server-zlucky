@@ -137,7 +137,33 @@ let checkLogin = (phoneNumber, password) => {
     })
 }//ok
 
- 
+let getProfile = (userId) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let resData = {};
+            let user = await db.User.findOne({
+                where: { id: userId },
+                raw: true,
+                attributes: ['id', 'userName', 'phoneNumber', 'email', 'gameNumber']
+            })
+            if (user) {
+                resData = {
+                    code: 0,
+                    message: "OK",
+                    user: user
+                }
+            } else {
+                resData = {
+                    code: 5,
+                    message: "Loi DB"
+                }
+            }
+            resolve(resData);
+        } catch (e) {
+            reject(e);
+        }
+    })
+}
 //update user
 let updateUserById = (data) => {
     return new Promise(async (resolve, reject) => {
@@ -305,5 +331,5 @@ let jlSpin = (data) => {
     })
 }
 export {
-    createUser, checkLogin, isLogin, updateUserById, updatePassword,jlSpin
+    createUser, checkLogin, isLogin, updateUserById, updatePassword,jlSpin,getProfile
 }
