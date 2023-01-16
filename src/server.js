@@ -7,12 +7,15 @@ import dotenv from 'dotenv';
 //const Nexmo = require('nexmo');
 let app= express()
 app.use(cookieParser())
+
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", "https://zolucky-khanhbg.vercel.app/"); 
+    res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     res.header("Access-Control-Allow-Credentials", "true");
-    res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE, HEAD");
+    
     next();
+
   })
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
