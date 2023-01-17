@@ -19,8 +19,9 @@ let hashPassword = (password) => {
 //check dang nhap
 let isLogin = (req, res, next) => {
     try {
+        console.log(req)
         let token = req.cookies.cId;
-        //console.log(req)
+        console.log(token)
         if(token){
             let userId = jwt.verify(token, jwtCode)
             if (userId) { //neu verify duoc > tooken dung
@@ -285,51 +286,88 @@ let updatePassword = (data) => {
         }
     })
 }
+let updateSpin=(data)=>{
+    return new Promise(async(resolve, reject) => {
+                try {
+                    console.log(data)
+                    let resData = {};
+                    let prize=await db.Prize.findOne({ where: { id: data.prizeId } })
+                    let user = await db.User.findOne({
+                         where: { id: data.userId } 
+                        });
+                    if (user) {
+                        prize.number --;
+                        user.gameNumber--;
+                        await db.User.update({ gameNumber:user.gameNumber }, {
+                            where: {
+                              id:data.userId
+                            }
+                          });
+                        await db.Prize.update({ number:prize.gameNumber }, {
+                            where: {
+                              id:data.prizeId
+                            }
+                          })
+                          resData = {
+                            code: 1,
+                            message: "ok"
+                        }
+
+                    } else {
+                        resData = {
+                            code: 2,
+                            message: "Loi server"
+                        }            
+                    }
+                    resolve(resData);       
+                } catch (e) {
+                    reject(e)
+                }
+            })
+
+}
 
 // job later spin
-let jlSpin = (data) => {
-    return new Promise(async (resolve, reject) => {
-        try {
-            let resData = {};
-            let user = await db.User.findOne({ 
-                where: { id: data.userId },
-            })
-            let prize = await db.Prize.findOne({ where: { id: data.id } })
-            if (user) {
-                user.numberGame --;
-                await user.save();
-                prize.number--;
-                await prize.save();
-                let listWinPrize = await db.ListWinPrize.create({
-                    userId: 1,
-                    prizeId: 1,
-                    status: 0  
-                })
-                console.log("a")
-                console.log(listWinPrize)
-                if(listWinPrize){
-                    resData = {
-                        code: 0,
-                        message: "Cap nhat thong tin thanh cong"
-                    }
-                }else{
-                    resData = {
-                        code: 1,
-                        message: "Loi server"
-                    }
-                }   
-            } else {
-                resData = {
-                    code: 2,
-                    message: "Loi server"
-                }           
-            }
-            resolve(resData);
-        } catch (e) {
-            console.log(e)
-        }
-    })
-}
+// let jlSpin = (data) => {
+//     return new Promise(async (resolve, reject) => {
+//         try {
+//             let resData = {};
+//             const user = await db.User.findOne({ where: { id: data.userId } });
+//             //let prize = await db.Prize.findOne({ where: { id: data.prizeId } })
+//             if (user) {
+//                 console.log(user)
+//                 await user.save()
+//                 // prize.number--;
+//                 // await prize.save();
+//                 // let listWinPrize = await db.ListWinPrize.create({
+//                 //     userId: 1,
+//                 //     prizeId: 1,
+//                 //     status: 0  
+//                 // })
+//                 // console.log(listWinPrize)
+//                 // if(listWinPrize){
+//                 //     resData = {
+//                 //         code: 0,
+//                 //         message: "Cap nhat thong tin thanh cong"
+//                 //     }
+//                 // }else{
+//                 //     resData = {
+//                 //         code: 1,
+//                 //         message: "Loi server"
+//                 //     }
+//                 // }   
+//             } else {
+//                 resData = {
+//                     code: 2,
+//                     message: "Loi server"
+//                 }           
+//             }
+//             resolve(resData);
+//         } catch (e) {
+//             reject(e)
+//         }
+//     })
+// }
 export {
-    createUser, checkLogin, isLogin, updateUserById, updatePassword,jlSpin,getProfile
+    createUser, checkLogin, isLogin, updateUserById, updatePassword, getProfile, updateSpin
 }

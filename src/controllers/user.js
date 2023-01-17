@@ -176,7 +176,7 @@ let postUpdateSpin = async (req, res) => {
         console.log('day la server')
         let reqData = req.body 
         reqData.userId = req.userId
-        let resData = await s_user.jlSpin(reqData);
+        let resData = await s_user.updateSpin(reqData);
         if (resData) {
             return res.status(200).json({
                 code: resData.code,

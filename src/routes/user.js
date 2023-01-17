@@ -10,4 +10,5 @@ router.post('/updateSpin', s_user.isLogin, c_user.postUpdateSpin);
 
 router.get('/profile',s_user.isLogin,c_user.getProfile);
 router.get('/getListPrizes',c_user.getListPrizes);
+
 export default router;
