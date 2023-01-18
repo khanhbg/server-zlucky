@@ -182,34 +182,11 @@ let updateUserById = (data) => {
             let resData = {};
             let user = await db.User.findOne({ where: { id: data.userId } })
             if (user) {
-                user.userName = data.userName
-                user.gender = data.gender;
-                user.hight = data.hight;
-                user.weight = data.weight;
-                user.dateOfBirth = data.dateOfBirth;
-                user.cccd = data.cccd;
-                user.permanentAddress = data.permanentAddress;
-                user.phoneNumber = data.phoneNumber;
-                user.teamporaryRecidence = data.teamporaryRecidence;
-                user.email = data.email;
-                user.facebook = data.facebook;
-                user.zalo = data.zalo;
-                user.other = data.other;
-                user.job = data.job;
-                user.income = data.income;
-                user.education = data.education;
-                user.hobbies = data.hobbies;
-                user.marriage = data.marriage;
-                user.fatherName = data.fatherName;
-                user.motherName = data.motherName;
-                user.brotherName = data.brotherName;
-                user.sisterName = data.sisterName;
-                user.fatherPhoneNumber = data.fatherPhoneNumber;
-                user.motherPhoneNumber = data.motherPhoneNumber;
-                user.brotherPhoneNumber = data.brotherPhoneNumber;
-                user.sisterPhoneNumber = data.sisterPhoneNumber;
-                user.numberChildren = data.numberChildren;
-                await user.save();
+                await db.User.update({ userName : data.userName,phoneNumber:data.phoneNumber,email:data.email }, {
+                    where: {
+                      id:data.userId
+                    }
+                  });
                 resData = {
                     code: 0,
                     message: "Cap nhat thong tin thanh cong"

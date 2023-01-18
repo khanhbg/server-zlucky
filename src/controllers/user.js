@@ -66,8 +66,6 @@ let postLogin = async (req, res) => {
 let postUpdateProfile = async (req, res) => {
     try {
         let reqData = req.body
-        
-        reqData.userId = req.userId
         let resData = await s_user.updateUserById(reqData);
         if (resData) {
             return res.status(200).json({
