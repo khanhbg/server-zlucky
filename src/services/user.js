@@ -321,6 +321,11 @@ let updateSpin=(data)=>{
                             code: 1,
                             message: "ok"
                         }
+                        await db.ListWinPrize.create({
+                                userId: data.userId,
+                                prizeId: data.prizeId,
+                                status: 0  
+                        })
 
                     } else {
                         resData = {
