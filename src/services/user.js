@@ -157,6 +157,7 @@ let getProfile = (userId) => {
                 attributes: ['id', 'userName', 'phoneNumber', 'email', 'gameNumber']
             })
             if (user) {
+                console.log(user)
                 resData = {
                     code: 0,
                     message: "OK",
