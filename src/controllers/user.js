@@ -174,7 +174,7 @@ let getProfile = async(req,res)=>{
 let postUpdateSpin = async (req, res) => {
     try {
         let reqData = req.body 
-        reqData.userId = req.userId
+        //reqData.userId = req.userId
         let resData = await s_user.updateSpin(reqData);
         if (resData) {
             return res.status(200).json({

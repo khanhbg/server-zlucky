@@ -39,6 +39,7 @@ let isLogin = (req, res, next) => {
         //     })
         // }
         let userId= req.body.userId
+        console.log(userId)
         if(userId){
             next();
         }else{
@@ -311,7 +312,7 @@ let updateSpin=(data)=>{
                               id:data.userId
                             }
                           });
-                        await db.Prize.update({ number:prize.gameNumber }, {
+                        await db.Prize.update({ number:prize.number }, {
                             where: {
                               id:data.prizeId
                             }
