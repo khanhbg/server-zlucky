@@ -195,12 +195,32 @@ let postUpdateSpin = async (req, res) => {
         })
     }
 }
-let test=(req,res)=>{
-    return res.status(200).json({
-        code: 11,
-        message: 'hayy'
-    })
+let getHistorySpin = async(req,res)=>{
+    try {
+        let reqData = req.body
+        let resData = await s_user.getHistorySpin(reqData.userId); //req.userId
+        if (resData) {
+            return res.status(200).json({
+                code: resData.code,
+                message: resData.message,
+                listWinPrizes: resData.listWinPrizes
+            });
+        }
+        else {
+            return res.status(400).json({
+                code: 11,
+                message: 'Lỗi DB'
+            })
+        }
+    } catch (e) {
+        console.log(e)
+        return res.status(400).json({
+            code: 12,
+            message: 'Lỗi DB'
+        })
+    }
 }
+
 export {
-    postRegister, postLogin, postUpdateProfile, postUpdatePassword, getListPrizes, postUpdateSpin,getProfile
+    postRegister, postLogin, postUpdateProfile, postUpdatePassword, getListPrizes, postUpdateSpin,getProfile, getHistorySpin
 }

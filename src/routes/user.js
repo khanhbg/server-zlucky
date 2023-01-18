@@ -9,6 +9,7 @@ router.post('/changePassword', s_user.isLogin, c_user.postUpdatePassword); //doi
 router.post('/updateSpin', s_user.isLogin, c_user.postUpdateSpin);
 
 router.post('/profile',s_user.isLogin,c_user.getProfile);
+router.post('/listWin',s_user.isLogin,c_user.getHistorySpin);
 router.get('/getListPrizes',c_user.getListPrizes);
 
 export default router;

@@ -360,6 +360,56 @@ let updateSpin=(data)=>{
 //         }
 //     })
 // }
+
+let getHistorySpin = (userId) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            //yeu cau tran chua hoan thanh
+            let resData = {};
+            // let isComplete;
+            // let fDay = new Date(data.fDay);
+            // let tDay = new Date(data.tDay);
+            // gan trang thai tran da hoan thanh chua
+            // if (data.status == 0) {
+            //     isComplete = 0
+            // } else {
+            //     isComplete = 1
+            // }
+            //tim kiem voi id va trang thai
+            let listWinPrizes = await db.ListWinPrize.findAll({
+                where: {
+                   
+                   userId: userId
+                    //day: { [Op.between]: [fDay, tDay] }
+                },
+                order: [['createdAt', 'DESC']],
+                attributes: ['status', 'createdAt'],
+                include: [
+                    {
+                        model: db.User,
+                        as: "r_userId",
+                        attributes: ['userName'],
+                    },
+                    {
+                        model: db.Prize,
+                        as: "r_prizeId",
+                        attributes: ['prizesName'],
+                    }
+                ],
+                raw: true,
+                //nest: true,
+            })
+            if (listWinPrizes) {
+                resData.code = 0;
+                resData.message = 'OK';
+                resData.listWinPrizes = listWinPrizes;
+            } 
+            resolve(resData)
+        } catch (e) {
+            reject(e);
+        }
+    })
+}//ok
 export {
-    createUser, checkLogin, isLogin, updateUserById, updatePassword, getProfile, updateSpin
+    createUser, checkLogin, isLogin, updateUserById, updatePassword, getProfile, updateSpin, getHistorySpin
 }
