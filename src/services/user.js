@@ -19,25 +19,33 @@ let hashPassword = (password) => {
 //check dang nhap
 let isLogin = (req, res, next) => {
     try {
-        console.log("login")
-        let token = req.cookies.cId;
-        console.log(token)
-        if(token){
-            let userId = jwt.verify(token, jwtCode)
-            if (userId) { //neu verify duoc > tooken dung
-                req.userId = userId //gan id
-                next();
-            } else {
-                return res.status(200).json({
-                    code: 11,
-                    message: 'Bạn chưa đăng nhập'
-                })
-            }
+        //let token = req.cookies.cId;
+        //console.log(token)
+        // if(token){
+        //     let userId = jwt.verify(token, jwtCode)
+        //     if (userId) { //neu verify duoc > tooken dung
+        //         req.userId = userId //gan id
+        //         next();
+        //     } else {
+        //         return res.status(200).json({
+        //             code: 11,
+        //             message: 'Bạn chưa đăng nhập'
+        //         })
+        //     }
+        // }else{
+        //     return res.status(200).json({
+        //         code: 11,
+        //         message: 'Bạn chưa đăng nhập'
+        //     })
+        // }
+        let userId= req.body.userId
+        if(userId){
+            next();
         }else{
             return res.status(200).json({
-                code: 11,
-                message: 'Bạn chưa đăng nhập'
-            })
+                     code: 11,
+                     message: 'Bạn chưa đăng nhập'
+            }) 
         }
     } catch (e) {
         console.log(e)
