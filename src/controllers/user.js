@@ -148,7 +148,8 @@ let getListPrizes = async (req, res) => {
 }
 let getProfile = async(req,res)=>{
     try {
-        let resData = await s_user.getProfile(req.userId);
+        let reqData = req.body
+        let resData = await s_user.getProfile(reqData.userId); //req.userId
         if (resData) {
             return res.status(200).json({
                 code: resData.code,
