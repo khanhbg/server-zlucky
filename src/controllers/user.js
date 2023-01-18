@@ -173,7 +173,6 @@ let getProfile = async(req,res)=>{
 // updateLateSpin
 let postUpdateSpin = async (req, res) => {
     try {
-        console.log('day la server')
         let reqData = req.body 
         reqData.userId = req.userId
         let resData = await s_user.updateSpin(reqData);

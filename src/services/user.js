@@ -19,7 +19,7 @@ let hashPassword = (password) => {
 //check dang nhap
 let isLogin = (req, res, next) => {
     try {
-        console.log(req)
+        console.log("login")
         let token = req.cookies.cId;
         console.log(token)
         if(token){
