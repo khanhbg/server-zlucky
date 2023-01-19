@@ -278,6 +278,12 @@ let updateSpin=(data)=>{
                 try {
                     console.log(data)
                     let resData = {};
+                    let status;
+                    if(data.prizeId==2){
+                        status=" Đã nhận"
+                    }else{
+                        status=" Chưa nhận"
+                    }
                     let prize=await db.Prize.findOne({ where: { id: data.prizeId } })
                     let user = await db.User.findOne({
                          where: { id: data.userId } 
@@ -302,7 +308,7 @@ let updateSpin=(data)=>{
                         await db.ListWinPrize.create({
                                 userId: data.userId,
                                 prizeId: data.prizeId,
-                                status: 0  
+                                status: status  
                         })
 
                     } else {
@@ -410,6 +416,34 @@ let getHistorySpin = (userId) => {
         }
     })
 }//ok
+let getnumberGame = (userId) => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let resData = {};
+            let user = await db.User.findOne({
+                where: { id: userId },
+                raw: true,
+                attributes: ['gameNumber']
+            })
+            if (user) {
+                console.log(user)
+                resData = {
+                    code: 0,
+                    message: "OK",
+                    user: user
+                }
+            } else {
+                resData = {
+                    code: 5,
+                    message: "Loi DB"
+                }
+            }
+            resolve(resData);
+        } catch (e) {
+            reject(e);
+        }
+    })
+}
 export {
-    createUser, checkLogin, isLogin, updateUserById, updatePassword, getProfile, updateSpin, getHistorySpin
+    createUser, checkLogin, isLogin, updateUserById, updatePassword, getProfile, updateSpin, getHistorySpin, getnumberGame
 }

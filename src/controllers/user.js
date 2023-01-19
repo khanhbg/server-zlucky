@@ -220,7 +220,31 @@ let getHistorySpin = async(req,res)=>{
         })
     }
 }
-
+let getNumberGamem=async(req,res)=>{
+    try{
+        let reqData = req.body
+        let resData = await s_user.getnumberGame(reqData.userId); //req.userId
+        if (resData) {
+            return res.status(200).json({
+                code: resData.code,
+                message: resData.message,
+                user: resData.user
+            });
+        }
+        else {
+            return res.status(400).json({
+                code: 11,
+                message: 'Lỗi DB'
+            })
+        }
+    }catch{
+        console.log(e)
+        return res.status(400).json({
+            code: 12,
+            message: 'Lỗi DB'
+        })
+    }
+}
 export {
     postRegister, postLogin, postUpdateProfile, postUpdatePassword, getListPrizes, postUpdateSpin,getProfile, getHistorySpin
 }
