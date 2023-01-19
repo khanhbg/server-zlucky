@@ -10,6 +10,7 @@ router.post('/updateSpin', s_user.isLogin, c_user.postUpdateSpin);
 
 router.post('/profile',s_user.isLogin,c_user.getProfile);
 router.post('/listWin',s_user.isLogin,c_user.getHistorySpin);
+router.post('/numberGame',s_user.isLogin,c_user.getNumberGame);
 router.get('/getListPrizes',c_user.getListPrizes);
 
 export default router;

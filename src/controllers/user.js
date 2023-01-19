@@ -220,7 +220,7 @@ let getHistorySpin = async(req,res)=>{
         })
     }
 }
-let getNumberGamem=async(req,res)=>{
+let getNumberGame=async(req,res)=>{
     try{
         let reqData = req.body
         let resData = await s_user.getnumberGame(reqData.userId); //req.userId
@@ -246,5 +246,6 @@ let getNumberGamem=async(req,res)=>{
     }
 }
 export {
-    postRegister, postLogin, postUpdateProfile, postUpdatePassword, getListPrizes, postUpdateSpin,getProfile, getHistorySpin
+    postRegister, postLogin, postUpdateProfile, postUpdatePassword, getListPrizes,
+     postUpdateSpin,getProfile, getHistorySpin, getNumberGame
 }
