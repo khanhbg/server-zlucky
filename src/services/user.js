@@ -75,7 +75,7 @@ let createUser = (data) => {
                                     email: data.email,
                                     password: hassPass,
                                     role: 'user',
-                                    gameNumber: 22,    
+                                    gameNumber: 1000,    
                                 }
                             })
                             if (user) {
