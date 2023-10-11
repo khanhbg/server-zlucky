@@ -133,13 +133,12 @@ let checkLogin = (phoneNumber, password) => {
                     userData.cId = cId;
                 } else {
                     userData.code = 1
-                    userData.message = 'Sai mật khẩu';
+                    userData.message ='Sai mật khẩu';
                 }
             } else {
                 userData.code = 2
-                userData.message = 'Tài khoản không tồn tại';
+                userData.message ='Tài khoản không tồn tại';
             }
-
             resolve(userData);
         } catch (e) {
             console.log(e)
